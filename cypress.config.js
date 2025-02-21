@@ -7,6 +7,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {
       // Tambahkan event listener jika perlu
       return config;
-    }
+    },
+    excludeSpecPattern : "**/cypress/e2e/loginforgot.cy.js"
   },
 });

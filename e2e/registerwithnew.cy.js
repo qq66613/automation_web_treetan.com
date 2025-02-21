@@ -1,5 +1,5 @@
 import registerUser from '../register_flow/registerToFlow'
-
+import  defineConfig  from 'cypress';
 describe('User Registration', () => {
     Cypress.on('uncaught:exception', (err, runnable) => {
         // returning false here prevents Cypress
