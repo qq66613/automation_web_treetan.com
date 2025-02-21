@@ -15,10 +15,4 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import '../e2e'
-import '../cypress.config'
 
-Cypress.on('uncaught:exception', (err, runnable) => {
-    console.log('Error ditangkap:', err.message);
-    return false;
-});
