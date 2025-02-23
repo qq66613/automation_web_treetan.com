@@ -2,6 +2,7 @@
 import loginwithaccountregister from "../pages_login/loginwithaccountregister";
 import toproducts from "../products/toproducts";
 import onpdp from "../products/onpdp";
+import isidatajamaah from "../isidatajamaah/isidatajamaah";
 describe('booking with fill form', () => {
 
 
@@ -26,6 +27,7 @@ describe('booking with fill form', () => {
         toproducts.clickProduct();
         onpdp.hargaPDP();
         onpdp.isiformpdp();
+        isidatajamaah.isiformjamaahbooking();
     });
 
     
