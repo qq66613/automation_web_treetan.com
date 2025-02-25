@@ -18,13 +18,40 @@ class isiDataJamaahBooking{
         //return Math.random() < 0.5 ? "Laki-laki" : "Perempuan";      
     //}
 
-    selectRandomGender() {
+    selectRandomGender1() {
         // Klik dropdown untuk membuka opsi
         cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
-        
         // Pilih secara acak antara #menu-item-0 (Laki-laki) atau #menu-item-1 (Perempuan)
+        cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
         const randomOption = Math.random() < 0.5 ? '#menu-item-0' : '#menu-item-1';
-        cy.get(randomOption).should('be.visible').click();;
+        return randomOption;
+    }
+
+    selectRandomGender2() {
+        // Klik dropdown untuk membuka opsi
+        cy.get(':nth-child(3) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
+        // Pilih secara acak antara #menu-item-0 (Laki-laki) atau #menu-item-1 (Perempuan)
+        cy.get(':nth-child(3) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
+        const randomOption2 = Math.random() < 0.5 ? '#menu-item-1' : '#menu-item-0';
+        return randomOption2;
+    }
+
+    selectRandomGender3() {
+        // Klik dropdown untuk membuka opsi
+        cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
+        // Pilih secara acak antara #menu-item-0 (Laki-laki) atau #menu-item-1 (Perempuan)
+        cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
+        const randomOption3 = Math.random() < 0.5 ? '#menu-item-0' : '#menu-item-1';
+        return randomOption3;
+    }
+
+    selectRandomGender4() {
+        // Klik dropdown untuk membuka opsi
+        cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
+        // Pilih secara acak antara #menu-item-0 (Laki-laki) atau #menu-item-1 (Perempuan)
+        cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
+        const randomOption4 = Math.random() < 0.5 ? '#menu-item-1' : '#menu-item-0';
+        return randomOption4;
     }
 
     generateRandomDate() {
@@ -36,9 +63,18 @@ class isiDataJamaahBooking{
 
     isiformjamaahbooking(){
         cy.wait(5000);
-        cy.get(':nth-child(2) > :nth-child(2) > :nth-child(3) > .w-full').type(this.namajamaah);
-        this.selectRandomGender();
+        cy.get(':nth-child(2) > :nth-child(2) > :nth-child(3) > .w-full').eq(0).type(this.namajamaah);
+        this.selectRandomGender1();
         cy.get("input[name='date']").eq(0).type(this.generateRandomDate({force :true }));
+        //Jamaah 1
+        cy.get(':nth-child(3) > :nth-child(2) > .w-full').type(this.namajamaah);
+        this.selectRandomGender2();
+        cy.get("input[name='date']").eq(1).type(this.generateRandomDate({force :true }));
+        //jamaah 2
+        cy.get(':nth-child(4) > :nth-child(2) > .w-full').type(this.namajamaah);
+        this.selectRandomGender3();
+        cy.get("input[name='date']").eq(2).type(this.generateRandomDate({force :true }));
+        //jamaah 3
     }
 }
 
