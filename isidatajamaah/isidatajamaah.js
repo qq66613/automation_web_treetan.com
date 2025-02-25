@@ -14,10 +14,6 @@ class isiDataJamaahBooking{
         return `${names[Math.floor(Math.random() * names.length)]} ${lastNames[Math.floor(Math.random() * lastNames.length)]}`;
     }
 
-    //generateRandomGender() {
-        //return Math.random() < 0.5 ? "Laki-laki" : "Perempuan";      
-    //}
-
     selectRandomGender1() {
         // Klik dropdown untuk membuka opsi
         cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
@@ -41,15 +37,15 @@ class isiDataJamaahBooking{
         cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
         // Pilih secara acak antara #menu-item-0 (Laki-laki) atau #menu-item-1 (Perempuan)
         cy.get(':nth-child(4) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
-        const randomOption3 = Math.random() < 0.5 ? '#menu-item-0' : '#menu-item-1';
+        const randomOption3 = Math.random() < 0.5 ? '#menu-item-1' : '#menu-item-0';
         return randomOption3;
     }
 
     selectRandomGender4() {
         // Klik dropdown untuk membuka opsi
-        cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
+        cy.get(':nth-child(5) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > div.h-full > #menu-button').click();
         // Pilih secara acak antara #menu-item-0 (Laki-laki) atau #menu-item-1 (Perempuan)
-        cy.get(':nth-child(2) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
+        cy.get(':nth-child(5) > .flex-col > :nth-child(1) > .mt-1 > .dropdown > .dropdown-options').click();
         const randomOption4 = Math.random() < 0.5 ? '#menu-item-1' : '#menu-item-0';
         return randomOption4;
     }
@@ -75,6 +71,36 @@ class isiDataJamaahBooking{
         this.selectRandomGender3();
         cy.get("input[name='date']").eq(2).type(this.generateRandomDate({force :true }));
         //jamaah 3
+        cy.get(':nth-child(5) > :nth-child(2) > .w-full').type(this.namajamaah);
+        this.selectRandomGender4();
+        cy.get("input[name='date']").eq(3).type(this.generateRandomDate({force :true }));
+    }
+
+    validasiDetailPesanan(){
+        onpdp.Validasitotalhargajamaah();
+        onpdp.validasitotaldiskonjamaah();
+
+        cy.get('.flex.body-1-semibold > span').scrollIntoView().wait(500).should('be.visible');
+        cy.get('.fixed > .flex > .body-1-semibold').should("contain", onpdp.formatNumberWithDots((onpdp.hargaPerPax - onpdp.diskonPerPax) * onpdp.jumlahpemesan));
+        cy.get('.mt-3 > :nth-child(2)').should('contain', onpdp.formatNumberWithDots(onpdp.diskonPerPax * onpdp.jumlahpemesan));
+    }
+
+    clickcheckbox(){
+        cy.get("input[type='checkbox']").click();
+        cy.wait(500);
+    }
+
+    clicktochoosepayment(){
+        cy.get("div.button.fixed.z-10.hidden button.bg-green-1").click({force:true});
+        cy.wait(500)
+        cy.get('.justify-between > .bg-green-1').click();
+    }
+
+    bookingAndValidate(){
+        this.isiformjamaahbooking();
+        this.validasiDetailPesanan();
+        this.clickcheckbox();
+        this.clicktochoosepayment();
     }
 }
 

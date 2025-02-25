@@ -2,7 +2,7 @@ import { expect } from "chai";
 
 class onPDP {
     constructor(){
-        this.hargaPerPax = 37500000; //harga perpax test product
+        this.hargaPerPax = 9000000; //harga perpax test product
         this.diskonPerPax = 250000; // harga diskon test products
         this.jumlahpemesan = 1;// default jumlah pemesan 1
     }
@@ -41,11 +41,23 @@ class onPDP {
         cy.get(':nth-child(4) > .text-green-1').should('contain', this.formatNumberWithDots(totalHargaExpected));
     }
 
+    Validasitotalhargajamaah(){// untuk validasi harga di Jamaah
+        const totalHargaExpected = (this.hargaPerPax - this.diskonPerPax) * this.jumlahpemesan;
+        cy.get('.fixed > .flex > .body-1-semibold').should('contain', this.formatNumberWithDots(totalHargaExpected));
+    }
+
     validasitotaldiskon(){
-        //untuk validasi terkait total harga setelah counter
+        //untuk validasi terkait total diskon setelah counter
         const totaldiskon = this.diskonPerPax * this.jumlahpemesan;
         cy.get('.items-center > .flex > .body-2-semibold').should('contain', this.formatNumberWithDots(totaldiskon));
     }
+
+    validasitotaldiskonjamaah(){
+        //untuk validasi terkait total diskon harga setelah counter
+        const totaldiskon = this.diskonPerPax * this.jumlahpemesan;
+        cy.get('.mt-3 > :nth-child(2)').should('contain', this.formatNumberWithDots(totaldiskon));
+    }
+
     isiformpdp(){   
         this.pilihdropdown();
         this.tambahjumlahpemesan();

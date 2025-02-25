@@ -27,7 +27,7 @@ describe('booking with fill form', () => {
         toproducts.clickProduct();
         onpdp.hargaPDP();
         onpdp.isiformpdp();
-        isidatajamaah.isiformjamaahbooking();
+        isidatajamaah.bookingAndValidate();
     });
 
     
