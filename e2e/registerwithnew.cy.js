@@ -14,7 +14,7 @@ describe('User Registration', () => {
         registerUser.scrolldown();
         registerUser.inputname('maskun');
         registerUser.inputnomortelp('0821121286775');
-        registerUser.inputemail('giwpo@edny.net');
+        registerUser.inputemail('firizqikaismail74@gmail.com');
         registerUser.inputpassword('NumeroUno109#');
         registerUser.clickdaftar();
     });

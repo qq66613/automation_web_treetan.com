@@ -26,7 +26,8 @@ class registerUser {
     }
 
     clickdaftar(){
-        cy.get('.hidden > .block').click()
+        cy.get('.hidden > .block').click({force : true})
+        cy.wait(7000);
     }
 }
 
