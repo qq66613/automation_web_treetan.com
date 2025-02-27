@@ -13,14 +13,13 @@ class loginRegister {
         cy.get('.flex-col > :nth-child(1) > .text-base').scrollIntoView();
     }
 
-    inputemail(email){
-        cy.get('input[placeholder="Masukkan Email"]').type(email);
+    inputemail(){
+        cy.get('input[placeholder="Masukkan Email"]').type('merryterry776@gmail.com');
         
     }
 
-    inputpassword(password){
-        cy.get('.relative > .w-full').type(password);
-        //cy.wait(1000)
+    inputpassword(){
+        cy.get('.relative > .w-full').type('Tester#1290');
     }
 
     clicksubmit(){
@@ -31,7 +30,16 @@ class loginRegister {
     verifyimage() {
         cy.get("img[title='Profile']").should('be.visible');
     }
-    
+
+    loginwithvalidcredential(){
+        this.visit();
+        this.catchthebuttonlogin();
+        this.scrolllogin();
+        this.inputemail();
+        this.inputpassword();
+        this.clicksubmit()
+        this.verifyimage();
+    }
 }
 
 export default new loginRegister();

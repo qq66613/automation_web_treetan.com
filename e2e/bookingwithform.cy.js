@@ -7,22 +7,12 @@ import paymentschoose from "../payments/paymentschoose";
 import virtualaccountbni from "../payments/virtualaccountbni";
 import paymentsbni from "../payments/paymentsbni";
 describe('booking with fill form', () => {
-
-
     Cypress.on('uncaught:exception', (err, runnable) => {
-        // returning false here prevents Cypress
-        // inside the cy.origin() method from failing the test
         return false
       })
     
     beforeEach(()=> {
-        loginwithaccountregister.visit();
-        loginwithaccountregister.catchthebuttonlogin();
-        loginwithaccountregister.scrolllogin();
-        loginwithaccountregister.inputemail('merryterry776@gmail.com');
-        loginwithaccountregister.inputpassword('Tester#1290');
-        loginwithaccountregister.clicksubmit();
-        loginwithaccountregister.verifyimage();
+        loginwithaccountregister.loginwithvalidcredential();
         toproducts.toMenuNavbar();
         toproducts.clickProduct();
         onpdp.hargaPDP();
@@ -32,7 +22,7 @@ describe('booking with fill form', () => {
         paymentsbni.approachtobniforuser();
     });
 
-    it('click product', () => {
+    it('payments the Products', () => {
         virtualaccountbni.visitingandthepayment();
     });
 
