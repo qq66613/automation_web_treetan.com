@@ -1,7 +1,6 @@
-
-
 class loginRegister {
 
+    
     visit(){
         cy.visit("https://beta.treetan.com")
     }
@@ -29,8 +28,8 @@ class loginRegister {
         cy.wait(5000);
     }
 
-    verifyimage(){
-        cy.get("img[title='Profile']").scrollIntoView().should('be.visible');
+    verifyimage() {
+        cy.get("img[title='Profile']").should('be.visible');
     }
     
 }

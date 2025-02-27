@@ -8,7 +8,7 @@ class onPDP {
     }
 
     hargaPDP(){
-        cy.wait(5000);
+        //cy.wait(5000);
         cy.get('.text-right > div > .heading-6-semibold').should('be.visible');
         cy.get('#toast-success').should('contain','Promo berhasil digunakan');
          
@@ -44,6 +44,7 @@ class onPDP {
     Validasitotalhargajamaah(){// untuk validasi harga di Jamaah
         const totalHargaExpected = (this.hargaPerPax - this.diskonPerPax) * this.jumlahpemesan;
         cy.get('.fixed > .flex > .body-1-semibold').should('contain', this.formatNumberWithDots(totalHargaExpected));
+        
     }
 
     validasitotaldiskon(){

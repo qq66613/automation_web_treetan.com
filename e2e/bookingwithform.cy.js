@@ -4,6 +4,8 @@ import toproducts from "../products/toproducts";
 import onpdp from "../products/onpdp";
 import isidatajamaah from "../isidatajamaah/isidatajamaah";
 import paymentschoose from "../payments/paymentschoose";
+import virtualaccountbni from "../payments/virtualaccountbni";
+import paymentsbni from "../payments/paymentsbni";
 describe('booking with fill form', () => {
 
 
@@ -21,18 +23,20 @@ describe('booking with fill form', () => {
         loginwithaccountregister.inputpassword('Tester#1290');
         loginwithaccountregister.clicksubmit();
         loginwithaccountregister.verifyimage();
-    });
-
-    it('click product', () => { 
         toproducts.toMenuNavbar();
         toproducts.clickProduct();
         onpdp.hargaPDP();
         onpdp.isiformpdp();
         isidatajamaah.bookingAndValidate();
-        paymentschoose.validasidp();
+        paymentschoose.validasionchoosepayment();
+        paymentsbni.approachtobniforuser();
+    });
+
+    it('click product', () => {
+        virtualaccountbni.visitingandthepayment();
     });
 
     
-        
+
    
 });

@@ -79,7 +79,6 @@ class isiDataJamaahBooking{
     validasiDetailPesanan(){
         onpdp.Validasitotalhargajamaah();
         onpdp.validasitotaldiskonjamaah();
-
         cy.get('.flex.body-1-semibold > span').scrollIntoView().wait(500).should('be.visible');
         cy.get('.fixed > .flex > .body-1-semibold').should("contain", onpdp.formatNumberWithDots((onpdp.hargaPerPax - onpdp.diskonPerPax) * onpdp.jumlahpemesan));
         cy.get('.mt-3 > :nth-child(2)').should('contain', onpdp.formatNumberWithDots(onpdp.diskonPerPax * onpdp.jumlahpemesan));
