@@ -20,6 +20,7 @@ class loginRegister {
 
     inputpassword(){
         cy.get('.relative > .w-full').type('Tester#1290');
+  
     }
 
     clicksubmit(){
